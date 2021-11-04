@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { environment as env } from 'src/environments/environment';
+import { computeMsgId } from '@angular/compiler';
 
 const baseURL = env.apiUrl;
 
@@ -9,30 +10,33 @@ const baseURL = env.apiUrl;
   providedIn: 'root'
 })
 export class AuthService {
-
- public reloader$: BehaviorSubject<any>;
- public user: Observable<any>;
  
- constructor(private httpClient: HttpClient, private storage: Storage) {
-		this.reloader$ = new BehaviorSubject(null);
-		this.user = this.reloader$.asObservable();
-	}
+ constructor(private httpClient: HttpClient) {}
+
+  accessToken(): Observable<any> {
+    const auth = {
+      grant_type: "password",
+      username: "cms", 
+      password: "8b0f19c0926861a3d75655a59efdc3b4"
+    }
+    return this.httpClient.post(baseURL+'oauth/token/', auth);
+  }
 
   login(data: any): Observable<any> {
-    return this.httpClient.post(baseURL+'/public/auth', data);
-  }
-  
-  setUser(data: any) {
-    this.storage.set("user", data).then((a:any) => {
-      this.reloader$.next(a);
-    });
+    const httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        Authorization:  'Bearer ' + this.getToken(),
+      })
+    };
+    return this.httpClient.post(baseURL+'auth/user/login/', data, httpOptions);
   }
 
   setToken(value: any) {
     localStorage.setItem('token', value);
   }
     
-  getToken(){ 
+  getToken() { 
     return localStorage.getItem('token');
   }
   

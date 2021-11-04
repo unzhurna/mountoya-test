@@ -20,8 +20,6 @@ import { DataTablesModule } from 'angular-datatables';
     CommonModule,
     ProductRoutingModule,
     DataTablesModule,
-  ],
-  exports: []
-
+  ]
 })
 export class ProductModule { }

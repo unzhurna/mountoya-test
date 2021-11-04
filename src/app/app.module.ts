@@ -21,11 +21,13 @@ import { TokenInterceptor } from './token.interceptor';
     ProductModule,
     HttpClientModule,
   ],
-  providers: [{
+  providers: [
+    {
 			provide: HTTP_INTERCEPTORS,
 			useClass: TokenInterceptor,
 			multi: true,
-		}],
+		}
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

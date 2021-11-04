@@ -14,22 +14,22 @@ export class ProductService  {
   constructor(private httpClient: HttpClient) { }
 
   readAll(): Observable<any> {
-    return this.httpClient.get(baseURL+'/public/product');
+    return this.httpClient.get(baseURL+'product');
   }
 
   read(id: any): Observable<any> {
-    return this.httpClient.get(`${baseURL}/${id}`);
+    return this.httpClient.get(`${baseURL}${id}`);
   }
 
   create(data: any): Observable<any> {
-    return this.httpClient.post(baseURL+'/public/product', data);
+    return this.httpClient.post(baseURL+'public/product', data);
   }
 
   update(id: any, data: any): Observable<any> {
-    return this.httpClient.put(`${baseURL}/${id}`, data);
+    return this.httpClient.put(`${baseURL}${id}`, data);
   }
 
   delete(id: any): Observable<any> {
-    return this.httpClient.delete(`${baseURL}/${id}`);
+    return this.httpClient.delete(`${baseURL}${id}`);
   }
 }

@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
-  apiToken: 'Bearer: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvbW91bnRveWF0ZXN0LjAwMHdlYmhvc3RhcHAuY29tXC9wdWJsaWNcL2F1dGgiLCJpYXQiOjE2MzU5OTQwNzMsImV4cCI6MTYzNTk5NzY3MywibmJmIjoxNjM1OTk0MDczLCJqdGkiOiJib3BmMlF5N2Z1WnlJZTVzIiwic3ViIjoxLCJwcnYiOiIyM2JkNWM4OTQ5ZjYwMGFkYjM5ZTcwMWM0MDA4NzJkYjdhNTk3NmY3In0.COJF8EmKTe3RjuNcrXnQZOs8pZq00Wqgy3bSAbRuSVw',
-  apiUrl: 'https://mountoyatest.000webhostapp.com',
+  apiUrl: 'http://burgreens-cms-api.inspira.web.id/',
+  apiUser: 'cms',
+  apiPassword: '8b0f19c0926861a3d75655a59efdc3b4',
 };

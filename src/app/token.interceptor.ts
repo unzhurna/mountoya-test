@@ -14,12 +14,11 @@ import { AuthService } from "./auth/services/auth.service";
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
+
   constructor(private router: Router, private authService: AuthService) {}
 
-  intercept(
-    request: HttpRequest<any>,
-    next: HttpHandler
-  ): Observable<HttpEvent<any>> {
+  intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    
     const token = this.authService.getToken();
 
     if (!request.headers.get("Authorization")) {
@@ -31,6 +30,10 @@ export class TokenInterceptor implements HttpInterceptor {
         });
       }
     }
+
+    request = request.clone({
+      headers: request.headers.set("Accept", "application/json"),
+    });
 
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
