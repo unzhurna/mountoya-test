@@ -1,0 +1,38 @@
+<div class="card">
+    <div class="card-header">
+        <h3 class="card-title">Detail Product</h3>
+    </div>
+    <div class="card-body">
+        <div class="form-group">
+            <label>Kode Produk</label>
+            <input type="text" class="form-control" [(ngModel)]="product.kode_produk" name="kode_produk" required />
+        </div>
+        <div class="form-group">
+            <label>Nama Produk</label>
+            <input type="text" class="form-control" [(ngModel)]="product.nama_produk" name="nama_produk" required />
+        </div>
+        <div class="form-group">
+            <label>Jenis Produk</label>
+            <input type="text" class="form-control" [(ngModel)]="product.jenis_produk" name="jenis_produk" required />
+        </div>
+        <div class="form-group">
+            <label>Satuan</label>
+            <input type="text" class="form-control" [(ngModel)]="product.satuan" name="satuan" required />
+        </div>
+        <div class="form-group">
+            <label>Harga</label>
+            <input type="text" class="form-control" [(ngModel)]="product.harga" name="harga" required />
+        </div>
+        <div class="form-group">
+            <label>Foto</label>
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="customFile" [(ngModel)]="product.foto" name="foto">
+                <label class="custom-file-label" for="customFile">Pilih foto</label>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer">
+        <a [routerLink]="['/products']" class="btn btn-secondary mr-2">Back</a>
+        <button (click)="updateProduct()" class="btn btn-primary">Update</button>
+    </div>
+</div>
